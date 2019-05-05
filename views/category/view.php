@@ -2,7 +2,8 @@
 
 /* @var $this yii\web\View */
 use yii\helpers\Html;
-$this->title = 'Magique biblio - книжный интернет-магазин. Diplom by Dmitry Gvozdev';
+use yii\widgets\LinkPager;
+use yii\helpers\Url;
 ?>
 <section>
     <div class="container">
@@ -18,15 +19,31 @@ $this->title = 'Magique biblio - книжный интернет-магазин.
                             <b>$ 0</b> <b class="pull-right">$ 600</b>
                         </div>
                     </div><!--/price-range-->
+                    <div class="brands_products"><!--brands_products-->
+                        <h2>Фильтр поиска</h2>
+                        <div class="brands-name">
+                            <p> Издатель </p>
+                            <ul class="nav nav-pills nav-stacked">
+                                <form>
+
+                                    <li><input type="radio" value="act">АСТ</li>
+                                    <li><input type="radio" value="astrel"> Астрель</li>
+                                    <li><input type="radio" value="inostranka"> Иностранка</li>
+                                    <li><input type="radio" value="rusman"> Росмэн</li>
+                                    <li><input type="radio" value="ripol"> РИПОЛ классик</li>
+                                    <li><input type="radio" value="аеь"> ФТМ</li>
+                                    <li><input type="radio" value="aksmo"> Эксмо</li>
+                                </form>
+                            </ul>
+                        </div>
+                    </div><!--/brands_products-->
 
                 </div>
             </div>
 
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
-                    <?foreach ($genre as $name): ?>
-                    <h2 class="title text-center"><?=$name['genre_name'];?></h2>
-                    <? endforeach; ?>
+                    <h2 class="title text-center"><?=$genre->genre_name?></h2>
                     <?php if(!empty($products)):?>
                     <? foreach ($products as $product):?>
 
@@ -34,19 +51,11 @@ $this->title = 'Magique biblio - книжный интернет-магазин.
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-<!--                                            <img src="/images/shop/product12.jpg" alt="" />-->
-                                            <?= Html::img("@web/images/books/{$product['img']}", ['alt'=> $product['product_name']]); ?>
+                                            <a href ="<?=Url::to(['book/view', 'id' => $product['id']])  ?>"> <?= Html::img("@web/images/books/{$product['img']}", ['alt'=> $product['product_name']]); ?></a>
                                             <h2><?= $product['price']; ?> ₽</h2>
-                                            <p><?=$product['product_name'] ?></p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <p><a href ="<?=Url::to(['book/view', 'id' => $product['id']])  ?>"><?=$product['product_name'] ?></a></p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Добавить в корзину</a>
                                         </div>
-<!--                                        <div class="product-overlay">-->
-<!--                                            <div class="overlay-content">-->
-<!--                                                <h2>$56</h2>-->
-<!--                                                <p>Easy Polo Black Edition</p>-->
-<!--                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
                                         <?php if($product['new']): ?>
                                             <?= Html::img("@web/images/home/new.png", ['alt'=> 'New', 'class' => 'new']); ?>
                                         <?php endif; ?>
@@ -64,13 +73,11 @@ $this->title = 'Magique biblio - книжный интернет-магазин.
 
                     <? endforeach;?>
                         <div class="clearfix"></div>
-                        <center>
-                        <ul class="pagination">
-                            <li class="active"><a href="">1</a></li>
-                            <li><a href="">2</a></li>
-                            <li><a href="">3</a></li>
-                            <li><a href="">&raquo;</a></li>
-                        </ul>
+                         <center>
+                            <? echo LinkPager::widget([
+                            'pagination' => $page,
+                            ]);
+                            ?>
                         </center>
                         <? else: ?>
                         <h2>Книги пока отсутсвуют, приходи позже.:C</h2>

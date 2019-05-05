@@ -11,6 +11,7 @@ body {
   background:;
   position: relative;
   font-weight:400px;
+  color: #696763;
 }
 
 ul li {
@@ -32,6 +33,7 @@ a {
   -moz-transition: 300ms;
     -o-transition: 300ms;
     transition: 300ms;
+  color: #696763;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -1190,7 +1192,6 @@ h2.title {
 
 .view-product img {
   border: 1px solid #F7F7F0;
-  height: 380px;
   width: 100%;
 }
 
@@ -1243,7 +1244,7 @@ h2.title {
 .newarrival{
 	position:absolute;
 	top:0;
-	left:0
+	left:91%;
 }
 
 .product-information h2 {
@@ -1258,6 +1259,7 @@ h2.title {
   font-family: 'Roboto', sans-serif;
   margin-bottom: 5px;
 }
+
 
 .product-information span {
   display: inline-block;
@@ -1429,10 +1431,9 @@ h2.title {
 }
 
 .content-404 h2 a {
-  background: #9bcace;
-  color: #FFFFFF;
+  color: #9bcace;
   font-family: 'Roboto', sans-serif;
-  font-size: 44px;
+  font-size: 24px;
   font-weight: 300;
   padding: 8px 40px;
 }

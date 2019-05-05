@@ -10,6 +10,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\assets\ieAppAsset;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ieAppAsset::register($this);
@@ -39,7 +40,8 @@ ieAppAsset::register($this);
         <div class="row">
             <div class="col-sm-4">
                 <div class="logo pull-left">
-                    <a href=""><img src="/images/home/logo.png" alt="" /></a>
+<!--                    <img src="/images/home/logo.png" alt="" />-->
+                    <a href="<?= Url::home()?>"><?= Html::img('@web/images/home/logo.png'); ?></a>
                 </div>
 
             </div>
@@ -71,7 +73,7 @@ ieAppAsset::register($this);
                 </div>
                 <div class="mainmenu pull-left">
                     <ul class="nav navbar-nav collapse navbar-collapse">
-                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="<?= Url::home()?>" class="active">Home</a></li>
                         <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a href="shop.html">Products</a></li>

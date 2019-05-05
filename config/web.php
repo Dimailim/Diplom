@@ -51,7 +51,9 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'category/id-<id:\d+>' => 'category/view'
+                'category/id-<id:\d+>/page/<page:\d+>' => 'category/view',
+                'category/id-<id:\d+>' => 'category/view',
+                'book/id-<id:\d+>' => 'book/view'
             ],
         ],
 

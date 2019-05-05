@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 use yii\helpers\Html;
-$this->title = 'Magique biblio - книжный интернет-магазин. Diplom by Dmitry Gvozdev';
+use yii\helpers\Url;
 ?>
 <section id="slider"><!--slider-->
     <div class="container">
@@ -100,21 +100,12 @@ $this->title = 'Magique biblio - книжный интернет-магазин.
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <?= Html::img("@web/images/books/{$hit['img']}", ['alt'=> $hit['product_name']]); ?>
+                                    <a href="<?=Url::to(['book/view', 'id' => $hit['id']])  ?>"> <?= Html::img("@web/images/books/{$hit['img']}", ['alt'=> $hit['product_name']]); ?></a>
                                     <h2><?= $hit['price']; ?> ₽</h2>
-                                    <p><?= $hit['product_name']; ?></p>
+                                    <p><a href ="<?=Url::to(['book/view', 'id' => $hit['id']])  ?>"><?= $hit['product_name']; ?></a></p>
                                     <a href="<?= $hit['id'];?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Добавить в корзину</a>
 
                                 </div>
-
-                                <!-- comment this? -->
-<!--                                <div class="product-overlay">-->
-<!--                                    <div class="overlay-content">-->
-<!--                                        <h2>--><?//= $hit['price']; ?><!-- ₽</h2>-->
-<!--                                        <p>--><?//= $hit['product_name']; ?><!--</p>-->
-<!--                                        <a href="--><?//= $hit['id'];?><!--" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Добавить в корзину</a>-->
-<!--                                    </div> -->
-<!--                                </div><!-- end comment  -->
                                 <?php if($hit['new']): ?>
                                     <?= Html::img("@web/images/home/new.png", ['alt'=> 'New', 'class' => 'new']); ?>
                                 <?php endif; ?>
