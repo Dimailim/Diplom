@@ -53,7 +53,8 @@ $config = [
             'rules' => [
                 'category/id-<id:\d+>/page/<page:\d+>' => 'category/view',
                 'category/id-<id:\d+>' => 'category/view',
-                'book/id-<id:\d+>' => 'book/view'
+                'book/id-<id:\d+>' => 'book/view',
+                'search' => 'category/search',
             ],
         ],
 

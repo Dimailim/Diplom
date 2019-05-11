@@ -16,7 +16,7 @@ use yii\web\HttpException;
 class BookController extends AppController{
 
     public function actionView($id){
-        $id = Yii::$app->request->get('id');
+//        $id = Yii::$app->request->get('id');
         $book = Products::findOne($id);
         if(empty($book)){
             throw new HttpException(404, 'Запрошенная книга не найдена');

@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use yii\widgets\LinkPager;
 use yii\helpers\Url;
 ?>
+
 <section>
     <div class="container">
         <div class="row">
@@ -22,17 +23,33 @@ use yii\helpers\Url;
                     <div class="brands_products"><!--brands_products-->
                         <h2>Фильтр поиска</h2>
                         <div class="brands-name">
-                            <p> Издатель </p>
-                            <ul class="nav nav-pills nav-stacked">
-                                <form>
-
-                                    <li><input type="radio" value="act">АСТ</li>
-                                    <li><input type="radio" value="astrel"> Астрель</li>
-                                    <li><input type="radio" value="inostranka"> Иностранка</li>
-                                    <li><input type="radio" value="rusman"> Росмэн</li>
-                                    <li><input type="radio" value="ripol"> РИПОЛ классик</li>
-                                    <li><input type="radio" value="аеь"> ФТМ</li>
-                                    <li><input type="radio" value="aksmo"> Эксмо</li>
+                            <ul class="catalog category-products">
+                                <li> <p><b> Издатель </b> </p></li>
+                                <form action="">
+                                    <li><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+                                        <input type="checkbox" class="mdl-checkbox__input" id="checkbox-1" value="act">
+                                        АСТ
+                                    </label></li>
+                                    <li><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
+                                        <input type="checkbox" class="mdl-checkbox__input" id="checkbox-2"   value="astrel">
+                                        Астрель
+                                    </label></li>
+                                    <li><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-3">
+                                        <input type="checkbox" class="mdl-checkbox__input" id="checkbox-3"  value="inostranka">
+                                        Иностранка
+                                    </label></li>
+                                    <li><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-4">
+                                       <input type="checkbox" class="mdl-checkbox__input" id="checkbox-4"  value="rusman">Росмэн
+                                    </label></li>
+                                    <li><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-5">
+                                        <input type="checkbox" class="mdl-checkbox__input" id="checkbox-5"  value="ripol">РИПОЛ классик
+                                    </label></li>
+                                    <li><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-6">
+                                        <input type="checkbox" class="mdl-checkbox__input" id="checkbox-6"  value="ftm">ФТМ
+                                    </label></li>
+                                    <li><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-7">
+                                       <input type="checkbox" class="mdl-checkbox__input" id="checkbox-7"  value="aksmo">Эксмо>
+                                    </label></li>
                                 </form>
                             </ul>
                         </div>

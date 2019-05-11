@@ -17,8 +17,8 @@ class Categories extends  ActiveRecord{
         return 'categories';
     }
     public function getGenre(){
-        //поле  category_id  таблицы genre  связана с  id   таблицы  category
-        return $this->hasMany(Genre::className(), ['category_id' => 'id']);
-    }
+    //поле  category_id  таблицы genre  связана с  id   таблицы  category
+    return $this->hasMany(Genre::className(), ['category_id' => 'id']);
+}
 
 }
