@@ -1171,7 +1171,9 @@ h2.title {
 #similar-product {
   margin-top: 40px;
 }
-
+.del-item{
+  cursor: pointer;
+}
 
 #reviews {
   padding-left: 25px;

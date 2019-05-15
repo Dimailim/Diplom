@@ -49,11 +49,12 @@ use yii\helpers\Url;
                         <p><b>Количество страниц: </b> <?=$book->pages?></p>
                         <p><b>Возрастные ограничения:</b> <?=$book->age ?></p>
                         <span>
+                                    <input type="number" value="1" id="qty">
 									<span><?=$book->price ?> ₽</span>
-									<button type="button" class="btn btn-fefault cart">
+									<a href="<?=Url::to(['cart/add', 'id' => $book->id]) ?>" data-id="<?=$book->id?>" class="btn btn-default cart add-to-cart">
 										<i class="fa fa-shopping-cart"></i>
 										Добавить в корзину
-									</button>
+									</a>
 								</span>
 
                     </div><!--/product-information-->

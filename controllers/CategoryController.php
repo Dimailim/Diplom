@@ -56,6 +56,8 @@ class CategoryController extends AppController{
         $this->setMeta('Расширенный поиск');
         $search = trim(Yii::$app->request->get('search'));
         $c = Yii::$app->request->get('c');
+        $min = Yii::$app->request->get('min');
+        $min = Yii::$app->request->get('max');
         switch ($c){
             case 'publisher':
                 $name = 'публикации';

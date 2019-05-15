@@ -24,6 +24,7 @@ class BookController extends AppController{
         $hits = Products::find()->where(['hit' => 1])->limit(6)->all();
         $this->setMeta($book->product_name." | Magique biblio",$book->keyword,$book->description);
         return $this->render('view', compact('book','hits'));
+
     }
 
 }

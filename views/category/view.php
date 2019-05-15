@@ -20,40 +20,7 @@ use yii\helpers\Url;
                             <b>$ 0</b> <b class="pull-right">$ 600</b>
                         </div>
                     </div><!--/price-range-->
-                    <div class="brands_products"><!--brands_products-->
-                        <h2>Фильтр поиска</h2>
-                        <div class="brands-name">
-                            <ul class="catalog category-products">
-                                <li> <p><b> Издатель </b> </p></li>
-                                <form action="">
-                                    <li><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
-                                        <input type="checkbox" class="mdl-checkbox__input" id="checkbox-1" value="act">
-                                        АСТ
-                                    </label></li>
-                                    <li><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
-                                        <input type="checkbox" class="mdl-checkbox__input" id="checkbox-2"   value="astrel">
-                                        Астрель
-                                    </label></li>
-                                    <li><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-3">
-                                        <input type="checkbox" class="mdl-checkbox__input" id="checkbox-3"  value="inostranka">
-                                        Иностранка
-                                    </label></li>
-                                    <li><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-4">
-                                       <input type="checkbox" class="mdl-checkbox__input" id="checkbox-4"  value="rusman">Росмэн
-                                    </label></li>
-                                    <li><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-5">
-                                        <input type="checkbox" class="mdl-checkbox__input" id="checkbox-5"  value="ripol">РИПОЛ классик
-                                    </label></li>
-                                    <li><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-6">
-                                        <input type="checkbox" class="mdl-checkbox__input" id="checkbox-6"  value="ftm">ФТМ
-                                    </label></li>
-                                    <li><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-7">
-                                       <input type="checkbox" class="mdl-checkbox__input" id="checkbox-7"  value="aksmo">Эксмо>
-                                    </label></li>
-                                </form>
-                            </ul>
-                        </div>
-                    </div><!--/brands_products-->
+
 
                 </div>
             </div>
@@ -71,7 +38,7 @@ use yii\helpers\Url;
                                             <a href ="<?=Url::to(['book/view', 'id' => $product['id']])  ?>"> <?= Html::img("@web/images/books/{$product['img']}", ['alt'=> $product['product_name']]); ?></a>
                                             <h2><?= $product['price']; ?> ₽</h2>
                                             <p><a href ="<?=Url::to(['book/view', 'id' => $product['id']])  ?>"><?=$product['product_name'] ?></a></p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Добавить в корзину</a>
+                                            <a href="<?=Url::to(['cart/add', 'id' => $product['id']]) ?>" data-id="<?=$product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Добавить в корзину</a>
                                         </div>
                                         <?php if($product['new']): ?>
                                             <?= Html::img("@web/images/home/new.png", ['alt'=> 'New', 'class' => 'new']); ?>

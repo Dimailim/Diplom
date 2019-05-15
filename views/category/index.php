@@ -103,7 +103,7 @@ use yii\helpers\Url;
                                     <a href="<?=Url::to(['book/view', 'id' => $hit['id']])  ?>"> <?= Html::img("@web/images/books/{$hit['img']}", ['alt'=> $hit['product_name']]); ?></a>
                                     <h2><?= $hit['price']; ?> ₽</h2>
                                     <p><a href ="<?=Url::to(['book/view', 'id' => $hit['id']])  ?>"><?= $hit['product_name']; ?></a></p>
-                                    <a href="<?= $hit['id'];?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Добавить в корзину</a>
+                                    <a href="<?=Url::to(['cart/add', 'id' => $hit['id']]) ?>" data-id="<?=$hit['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Добавить в корзину</a>
 
                                 </div>
                                 <?php if($hit['new']): ?>

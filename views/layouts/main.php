@@ -11,6 +11,7 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\assets\ieAppAsset;
 use yii\helpers\Url;
+use yii\bootstrap\Modal;
 
 AppAsset::register($this);
 ieAppAsset::register($this);
@@ -50,7 +51,7 @@ ieAppAsset::register($this);
                     <ul class="nav navbar-nav">
                         <li><a href="#"><i class="fa fa-user"></i>Профиль</a></li>
                         <li><a href="#"><i class="fa fa-star"></i> Закладки</a></li>
-                        <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
+                        <li><a href="#" onclick="return getCart()"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
                         <li><a href="login.html"><i class="fa fa-lock"></i> Авторизация</a></li>
                     </ul>
                 </div>
@@ -78,7 +79,7 @@ ieAppAsset::register($this);
                             <ul role="menu" class="sub-menu">
                                 <li><a href="shop.html">Products</a></li>
                                 <li><a href="product-details.html">Мои закладки</a></li>
-                                <li><a href="cart.html">Корзина</a></li>
+                                <li><a href="#" onclick="return getCart()">Корзина</a></li>
                                 <li><a href="login.html">Авторизация</a></li>
                             </ul>
                         </li>
@@ -118,6 +119,19 @@ ieAppAsset::register($this);
         </div>
     </div>
 </footer><!--/Footer-->
+<?php
+ Modal::begin([
+         'header' => '<h2>Корзина</h2>',
+         'id' => 'cart',
+         'size' => 'modal-lg',
+         'footer' => '<button type="button" class="btn btn-primary" data-dismiss="modal">Продолжить покупки</button>
+        <a href="'.Url::to(['cart/view']).'" class="btn btn-primary">Оформить заказ</a>
+        <button type="button" class="btn btn-primary" onclick="clearCart()">Очистить корзину</button>',
+ ]);
+
+ Modal::end();
+?>
+
 <?php $this->endBody() ?>
 </body>
 

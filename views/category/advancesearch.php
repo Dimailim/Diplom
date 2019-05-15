@@ -44,7 +44,7 @@ use yii\helpers\Url;
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center">Расширенный поиск</h2>
                             <p align="center"><input type="text" placeholder="Введите запрос..." width="100%" name = "search" class="features_items"/></p>
-                            <p align="center"><input type="submit" value="Поиск" class="btn btn-default add-to-cart" > </p>
+                            <p align="center"><input type="submit" value="Поиск" class="btn btn-default" > </p>
                         </form>
                     <?php if(!empty($products)):?>
                         <h4>Поиск по <?= $name?>, запрос: <?= Html::encode($search)?></h4>
@@ -71,10 +71,10 @@ use yii\helpers\Url;
 
                                     <span>
 									<span><b><?= $product['price']; ?> ₽</b></span>
-									<button type="button" class="btn btn-fefault cart">
+									<a href="<?=Url::to(['cart/add', 'id' => $product['id']]) ?>" data-id="<?=$product->id?>" class="btn btn-default cart add-to-cart">
 										<i class="fa fa-shopping-cart"></i>
 										Добавить в корзину
-									</button>
+									</a>
 								</span>
 
                                 </div>

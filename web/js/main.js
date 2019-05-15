@@ -1,8 +1,104 @@
 /*price range*/
 
+function showCart(cart) {
+	$('#cart .modal-body').html(cart);
+	$('#cart').modal();
+}
+function getCart(){
+    $.ajax({
+        url:"/cart/show",
+        type: 'GET',
+        success: function (res) {
+            if(!res){
+                console.log('Захотел повозиться с исходным кодом, шалушника? Не пошло, бывает, почему бы  и нет! ;)');
+            }
+            showCart(res);
+        },
+        error: function () {
+            alert('Error');
+        }
+    });
+    return false;
+}
+
+$('#cart .modal-body').on('click','.del-item',function () {
+	var id = $(this).data('id');
+    $.ajax({
+        url:"/cart/delete",
+        data: {id: id},
+        type: 'GET',
+        success: function (res) {
+            if(!res){
+                console.log('Захотел повозиться с исходным кодом, шалушника? Не пошло, бывает, почему бы  и нет! ;)');
+            }
+            // console.log(res);
+            showCart(res);
+        },
+        error: function () {
+            alert('Error');
+        }
+    });
+});
+
+function clearCart() {
+    $.ajax({
+        url:"/cart/clear",
+        type: 'GET',
+        success: function (res) {
+            if(!res){
+                console.log('Захотел повозиться с исходным кодом, шалушника? Не пошло, бывает, почему бы  и нет! ;)');
+            }
+            showCart(res);
+        },
+        error: function () {
+            alert('Error');
+        }
+    });
+}
+$('.add-to-cart').on('click',function (e) {
+	e.preventDefault();
+	var id = $(this).data('id'),
+        qty = $('#qty').val();;
+	$.ajax({
+		url:"/cart/add",
+		data: {id: id, qty: qty},
+		type: 'GET',
+		success: function (res) {
+			if(!res){
+				console.log('Захотел повозиться с исходным кодом, шалушника? Не пошло, бывает, почему бы  и нет! ;)');
+			}
+			// console.log(res);
+			showCart(res);
+        },
+		error: function () {
+			alert('Error');
+        }
+	});
+
+	
+})
  // $('#sl2').slider();
 $('#sl2').slider().on('slide', function(ev){
-    console.log(ev.value);// массив с двумя значениями Array [ 2595, 3125 ]
+	// var min = $(this).data('slider-min');
+	// var max = $(this).data('slider-max');
+	 var min = ev.value[0],
+	    max = ev.value[1];
+	 // // var value = ev.value;
+	console.log('Min: '+min);
+	console.log('Max: '+max);
+	 // var value =  $(this).data('slider-value')
+	 // $.ajax({
+	 // 	url:'/category/asearch',
+		//  data: { min: min, max: max },
+		//  type: 'GET',
+		//  success: function (res) {
+		// 	 console.log("PHP SAYS: "+res);
+      //    },
+		//  error: function () {
+		// 	 alert('Error');
+      //    }
+	 // });
+    // console.log(ev.value);// массив с двумя значениями Array [ 2595, 3125 ]
 });
 $('.catalog').dcAccordion();
 	var RGBChange = function() {

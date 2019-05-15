@@ -46,10 +46,10 @@ use yii\helpers\Url;
 
                                     <span>
 									<span><b><?= $product['price']; ?> ₽</b></span>
-									<button type="button" class="btn btn-fefault cart">
+									<a href="<?=Url::to(['cart/add', 'id' => $product['id']]) ?>" data-id="<?=$product->id?>" class="btn btn-fefault cart add-to-cart">
 										<i class="fa fa-shopping-cart"></i>
 										Добавить в корзину
-									</button>
+									</a>
 								</span>
 
                                 </div>
