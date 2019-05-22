@@ -49,10 +49,13 @@ ieAppAsset::register($this);
             <div class="col-sm-8">
                 <div class="shop-menu pull-right">
                     <ul class="nav navbar-nav">
-                        <li><a href="#"><i class="fa fa-user"></i>Профиль</a></li>
-                        <li><a href="#"><i class="fa fa-star"></i> Закладки</a></li>
+                        <li><a href="<?=Url::to(['wishlist/view'])?>"><i class="fa fa-star"></i> Закладки</a></li>
                         <li><a href="#" onclick="return getCart()"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
-                        <li><a href="login.html"><i class="fa fa-lock"></i> Авторизация</a></li>
+                        <? if( Yii::$app->user->isGuest):?>
+                        <li><a href="<?=Url::to(['category/login'])?>"><i class="fa fa-lock"></i> Авторизация</a></li>
+                         <? else:?>
+                            <li><a href="<?=Url::to(['category/logout'])?>"><i class="fa fa-lock"></i> Выйти(<?=Yii::$app->user->identity->username?>)</a></li>
+                        <? endif; ?>
                     </ul>
                 </div>
             </div>
@@ -77,20 +80,13 @@ ieAppAsset::register($this);
                         <li><a href="<?= Url::home()?>" class="active">Главная</a></li>
                         <li class="dropdown"><a href="#">Магазин<i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
-                                <li><a href="shop.html">Products</a></li>
-                                <li><a href="product-details.html">Мои закладки</a></li>
+                                <li><a href="<?=Url::to(['category/index'])?>">Книги</a></li>
+                                <li><a href="<?=Url::to(['wishlist/view'])?>">Мои закладки</a></li>
                                 <li><a href="#" onclick="return getCart()">Корзина</a></li>
-                                <li><a href="login.html">Авторизация</a></li>
+                                <li><a href="<?=Url::to(['category/login'])?>">Авторизация</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown"><a href="#">Блог<i class="fa fa-angle-down"></i></a>
-                            <ul role="menu" class="sub-menu">
-                                <li><a href="blog.html">Blog List</a></li>
-                                <li><a href="blog-single.html">Blog Single</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="404.html">404</a></li>
-                        <li><a href="contact-us.html">Контакты</a></li>
+                        <li><a href="<?=Url::to(['category/contact'])?>">Контакты</a></li>
                     </ul>
                 </div>
             </div>

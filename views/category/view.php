@@ -8,18 +8,26 @@ use yii\helpers\Url;
 
 <section>
     <div class="container">
+        <?php if( Yii::$app->session->hasFlash('success') ): ?>
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <?php echo Yii::$app->session->getFlash('success'); ?>
+            </div>
+        <?php endif;?>
+        <?php if( Yii::$app->session->hasFlash('error') ): ?>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <?php echo Yii::$app->session->getFlash('error'); ?>
+            </div>
+        <?php endif;?>
         <div class="row">
             <div class="col-sm-3">
                 <div class="left-sidebar">
                     <h2>Категория</h2>
                     <ul class="catalog category-products"><?= \app\components\MenuWidget::widget(['tpl'=>'menu']) ?></ul><!--/category-products-->
-                    <div class="price-range"><!--price-range-->
-                        <h2>Price Range</h2>
-                        <div class="well">
-                            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
-                            <b>$ 0</b> <b class="pull-right">$ 600</b>
-                        </div>
-                    </div><!--/price-range-->
+                    <div class="shipping text-center"><!--shipping-->
+                        <img src="/images/home/shipping.png" alt="" />
+                    </div><!--/shipping-->
 
 
                 </div>
@@ -49,7 +57,7 @@ use yii\helpers\Url;
                                     </div>
                                     <div class="choose">
                                         <ul class="nav nav-pills nav-justified">
-                                            <li><a href=""><i class="fa fa-plus-square"></i>Добавить в закладки</a></li>
+                                            <li><a href="<?=Url::to(['wishlist/add', 'id'=>$product['id']])?>"><i class="fa fa-plus-square"></i>Добавить в закладки</a></li>
                                         </ul>
                                     </div>
                                 </div>

@@ -2,13 +2,25 @@
 
 namespace app\models;
 
-class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
+use app\models\SignupForm;
+use yii\db\ActiveRecord;
+use  yii\web\IdentityInterface;
+use Yii;
+
+class User extends ActiveRecord implements IdentityInterface
 {
+    /*
     public $id;
     public $username;
     public $password;
-    public $authKey;
-    public $accessToken;
+    public $email;
+    public $phone;
+    public $surname;
+    public $name;
+    public $lastname;
+    public $country;
+    public $address;
+
 
     private static $users = [
         '100' => [
@@ -26,14 +38,29 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
             'accessToken' => '101-token',
         ],
     ];
+    */
 
+    public static function tableName()
+    {
+        return 'user';
+    }
+
+    public function getOrder(){
+        return $this->hasMany(Order::className(),['user_id' => 'id']);
+    }
+
+    public function getWishlist(){
+
+        return $this->hasMany(Wishlist::className(),['user_id' => 'id']);
+
+    }
 
     /**
      * {@inheritdoc}
      */
     public static function findIdentity($id)
     {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+        return static::findOne(['id' => $id]);
     }
 
     /**
@@ -58,14 +85,39 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
      */
     public static function findByUsername($username)
     {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
-                return new static($user);
-            }
-        }
 
-        return null;
+
+        return static::findOne(['username' => $username]);
     }
+
+    public static function findByName($name)
+    {
+
+
+        return static::findOne(['name' => $name]);
+    }
+
+    public static function findByEmail($email)
+    {
+
+
+        return static::findOne(['email' => $email]);
+    }
+    public static function findByPhone($phone)
+    {
+
+
+        return static::findOne(['phone' => $phone]);
+    }
+
+    public static function findByAddress($address)
+    {
+
+
+        return static::findOne(['address' => $address]);
+    }
+
+
 
     /**
      * {@inheritdoc}
@@ -99,6 +151,7 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
      */
     public function validatePassword($password)
     {
-        return $this->password === $password;
+        return Yii::$app->security->validatePassword($password, $this->password);
     }
+
 }

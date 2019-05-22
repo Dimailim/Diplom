@@ -1186,7 +1186,10 @@ h2.title {
   margin-top: 10px;
 }
 
-
+.price_histogram{
+  width: 60px;
+  border-radius: 3px;
+}
 
 .view-product {
   position: relative;
@@ -1618,8 +1621,9 @@ h2.title {
 
 
 #cart_items .cart_info .cart_description h4 {
-  margin-bottom: 0
+  margin-bottom: 0;
 }
+
 
 #cart_items .cart_info .cart_description h4 a {
   color: #363432;
@@ -1675,7 +1679,7 @@ h2.title {
 
 .cart_delete  {
   display: block;
-  margin-right: -12px;
+  margin-right: 0px;
   overflow: hidden;
 }
 
@@ -2415,7 +2419,7 @@ h2.title {
   background:#9bcace;
   border: 0 none;
   border-radius: 0;
-  margin-top: 16px;
+  margin-top: -1px; /*16px;*/
 }
 
 .blank-arrow {

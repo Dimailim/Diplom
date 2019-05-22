@@ -4,10 +4,26 @@
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 use yii\helpers\Url;
+use yii\bootstrap\ActiveForm;
+
+$name = Yii::$app->user->identity->name;
+$email = Yii::$app->user->identity->email;
 ?>
 
 <section>
 <div class="container">
+    <?php if( Yii::$app->session->hasFlash('success') ): ?>
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?php echo Yii::$app->session->getFlash('success'); ?>
+        </div>
+    <?php endif;?>
+    <?php if( Yii::$app->session->hasFlash('error') ): ?>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?php echo Yii::$app->session->getFlash('error'); ?>
+        </div>
+    <?php endif;?>
     <div class="row">
         <div class="col-sm-3">
             <div class="left-sidebar">
@@ -49,12 +65,13 @@ use yii\helpers\Url;
                         <p><b>Количество страниц: </b> <?=$book->pages?></p>
                         <p><b>Возрастные ограничения:</b> <?=$book->age ?></p>
                         <span>
-                                    <input type="number" value="1" id="qty">
+                                    <input type="number" value="1" min="1" id="qty">
 									<span><?=$book->price ?> ₽</span>
 									<a href="<?=Url::to(['cart/add', 'id' => $book->id]) ?>" data-id="<?=$book->id?>" class="btn btn-default cart add-to-cart">
 										<i class="fa fa-shopping-cart"></i>
 										Добавить в корзину
 									</a>
+                                    <a href="<?=Url::to(['wishlist/add', 'id' =>$book->id])?>" class="btn btn-default"> Добавить в закладки</a>
 								</span>
 
                     </div><!--/product-information-->
@@ -78,26 +95,53 @@ use yii\helpers\Url;
                     </div>
 
                     <div class="tab-pane fade " id="reviews" >
-                        <div class="col-sm-12">
-                            <ul>
-                                <li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
-                                <li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
-                                <li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
-                            </ul>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                            <p><b>Write Your Review</b></p>
 
-                            <form action="#">
-										<span>
-											<input type="text" placeholder="Your Name"/>
-											<input type="email" placeholder="Email Address"/>
-										</span>
-                                <textarea name="" ></textarea>
-                                <b>Rating: </b> <img src="/images/product-details/rating.png" alt="" />
-                                <button type="button" class="btn btn-default pull-right">
-                                    Submit
-                                </button>
-                            </form>
+                        <div class="col-sm-12">
+                            <? if(!empty($res)):?>
+                                <? foreach ( $res as $msg):?>
+                            <ul>
+                                <li><i class="fa fa-user"></i> <?=$msg->name;?></li>
+                                <li><i class="fa fa-clock-o"></i> <?=$msg->time;?></li>
+                                <li><i class="fa fa-calendar-o"></i> <?=$msg->data;?></li>
+                            </ul>
+                            <p><?=$msg->comment;?></p>
+                                <?endforeach;?>
+                            <? else:?>
+                            <p>Отзывов пока что нет...  Будь первым!</p>
+                            <?endif;?>
+                            <p><b>Напишите свой отзыв</b></p>
+                            <? if(Yii::$app->user->isGuest):?>
+                            <?php $form = ActiveForm::begin(); ?>
+                            <span>
+                                <?=$form->field($review,'name')->textInput()->input('name',['placeholder'=>'Ваше имя'])->label(false); ?>
+                                <?=$form->field($review,'email')->textInput()->input('email',['placeholder' => 'Ваш E-mail'])->label(false); ?>
+                            </span>
+                                <?=$form->field($review,'comment')->textarea()->label(false); ?>
+                            <?= Html::submitButton('Отправить', ['class' => 'btn btn-default pull-right']); ?>
+
+                            <?php ActiveForm::end(); ?>
+                            <?else:?>
+                            <?php $form = ActiveForm::begin(); ?>
+                            <span>
+                                <?=$form->field($review,'name')->hiddenInput(['value' => $name])->label(false); ?>
+                                <?=$form->field($review,'email')->hiddenInput(['value' => $email])->label(false); ?>
+                            </span>
+                            <?=$form->field($review,'comment')->textarea()->label(false); ?>
+                            <?= Html::submitButton('Отправить', ['class' => 'btn btn-default pull-right']); ?>
+
+                            <?php ActiveForm::end(); ?>
+                            <?endif;?>
+
+<!--                            <form action="#">-->
+<!--										<span>-->
+<!--											<input type="text" placeholder="Your Name"/>-->
+<!--											<input type="email" placeholder="Email Address"/>-->
+<!--										</span>-->
+<!--                                <textarea name="" ></textarea>-->
+<!--                                <button type="button" class="btn btn-default pull-right">-->
+<!--                                    Submit-->
+<!--                                </button>-->
+<!--                            </form>-->
                         </div>
                     </div>
 
@@ -126,6 +170,11 @@ use yii\helpers\Url;
                                             <p><a href="<?=Url::to(['book/view', 'id' => $hit['id']]);?>"> <?=$hit['product_name'];?></a></p>
                                             <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Добавить в корзину</button>
                                         </div>
+                                    </div>
+                                    <div class="choose">
+                                        <ul class="nav nav-pills nav-justified">
+                                            <li><a href="<?=Url::to(['wishlist/add', 'id'=>$product['id']])?>"><i class="fa fa-plus-square"></i>Добавить в закладки</a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>

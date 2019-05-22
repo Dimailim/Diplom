@@ -21,4 +21,8 @@ class Products extends ActiveRecord
         //поле id таблицы products связана с  genre_id  в таблицe  genre
         return $this->hasOne(Genre::className(),['id' => 'genre_id']);
     }
+    public function getReview(){
+
+        return $this->hasMany(Review::className(),['product_id' => 'id']);
+    }
 }

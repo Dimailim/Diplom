@@ -10,12 +10,14 @@ namespace app\controllers;
 use Yii;
 use app\models\Products;
 use app\models\Cart;
+use app\models\Order;
+use app\models\OrderItems;
 
 
 
 class CartController extends AppController{
     public function actionAdd(){
-        if(Yii::$app->user->isGuest) {
+
             $id = Yii::$app->request->get('id');
             $qty = (int)Yii::$app->request->get('qty');
             $qty = !$qty ? 1 : $qty;
@@ -32,18 +34,8 @@ class CartController extends AppController{
             }
             $this->layout = false;
             return $this->render('cart-modal', compact('session'));
-        }
-        else{
-            $id = Yii::$app->request->get('id');
-            $product = Products::findOne($id);
-            if (empty($product)) {
-                return false;
-            }
-        }
-
     }
     public function actionClear(){
-        if(Yii::$app->user->isGuest) {
             $session = Yii::$app->session;
             $session->open();
             $session->remove('cart');
@@ -52,10 +44,8 @@ class CartController extends AppController{
             $this->layout = false;
             return $this->render('cart-modal', compact('session'));
 
-        }
     }
     public function actionDelete(){
-        if(Yii::$app->user->isGuest) {
             $id = Yii::$app->request->get('id');
             $session = Yii::$app->session;
             $session->open();
@@ -63,18 +53,65 @@ class CartController extends AppController{
             $cart->recalc($id);
             $this->layout = false;
             return $this->render('cart-modal', compact('session'));
-        }
+
     }
     public function  actionShow(){
-        if(Yii::$app->user->isGuest) {
             $id = Yii::$app->request->get('id');
             $session = Yii::$app->session;
             $session->open();
             $this->layout = false;
             return $this->render('cart-modal', compact('session'));
-        }
+
     }
     public function  actionView(){
-        return $this->render('view');
+        $session = Yii::$app->session;
+        $session->open();
+        $this->setMeta('Оформить заказ');
+        $order = new Order();
+        if($order->load(Yii::$app->request->post())){
+            $order->qty = $session['cart.qty'];
+            $order->sum = $session['cart.sum'];
+            if(Yii::$app->user->isGuest){
+                $order->user_id = 0;
+            }
+           else{
+                $order->user_id = Yii::$app->user->identity->getId();
+           }
+            if($order->save()){
+                $this->saveOrderItems($session['cart'],$order->id);
+                Yii::$app->session->setFlash('success','Ваш заказ принят. Менеджер свяжется с вами! Ожидайте!');
+                Yii::$app->mailer->compose('order',['session' => $session])
+                    ->setFrom(['test@mail.ru' => 'Книжный магазин Magique Biblio' ])
+                    ->setTo($order->email)
+                    ->setSubject('Книжку заказывали?')
+                    ->send();
+                $session->remove('cart');
+                $session->remove('cart.qty');
+                $session->remove('cart.sum');
+                return $this->refresh();
+            }
+            else{
+                Yii::$app->session->setFlash('error','Ошибка оформления заказа');
+            }
+
+        }
+        return $this->render('view', compact('session','order'));
     }
+
+
+
+    protected function saveOrderItems($items, $order_id){
+        foreach ($items as $id => $item){
+            $order_items = new OrderItems();
+            $order_items->order_id = $order_id;
+            $order_items->product_id = $id;
+            $order_items->name = $item['product_name'];
+            $order_items->price = $item['price'];
+            $order_items->qty_item = $item['qty'];
+            $order_items->sum_item = $item['qty'] * $item['price'];
+            $order_items->save();
+        }
+
+    }
+
 }

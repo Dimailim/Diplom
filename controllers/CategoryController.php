@@ -10,6 +10,10 @@ namespace app\controllers;
 use app\models\Categories;
 use app\models\Genre;
 use app\models\Products;
+use app\models\SignupForm;
+use app\models\User;
+use app\models\LoginForm;
+use app\models\ContactForm;
 use Yii;
 use yii\data\Pagination;
 use yii\web\HttpException;
@@ -19,10 +23,11 @@ class CategoryController extends AppController{
 
     public function  actionIndex(){ //действие по умолчанию
         $hits = Products::find()->where(['hit' => 1])->limit(6)->all();
+        $sales = Products::find()->where(['sale' => 1])->limit(6)->all();
+        $new = Products::find()->where(['new' => 1])->limit(3)->all();
         //debug($hits);thunder
-
         $this->setMeta('Magique biblio - книжный интернет-магазин. Diplom by Dmitry Gvozdev');
-        return $this->render('index',compact('hits'));
+        return $this->render('index',compact('hits','sales','new'));
     }
     public function actionView($id){
 //        $id = Yii::$app->request->get('id');  // второй способ через массив  get
@@ -57,7 +62,8 @@ class CategoryController extends AppController{
         $search = trim(Yii::$app->request->get('search'));
         $c = Yii::$app->request->get('c');
         $min = Yii::$app->request->get('min');
-        $min = Yii::$app->request->get('max');
+        $max = Yii::$app->request->get('max');
+
         switch ($c){
             case 'publisher':
                 $name = 'публикации';
@@ -76,14 +82,16 @@ class CategoryController extends AppController{
                 $query = Products::find()->where(['like','content',$search]);
                 break;
             case 'new':
-                $name = 'новинкам';
                 $search = ".";
                 $query = Products::find()->where(['like', 'new', 1]);
                 break;
             case 'sale':
-                $name = "скидкам";
                 $search = ".";
                 $query = Products::find()->where(['like','sale',1]);
+                break;
+            case 'price':
+                $search =".";
+                $query = Products::find()->where(['>', 'price', $min])->andWhere(['<', 'price', $max]);
                 break;
             default:
                 $name = 'названию';
@@ -94,9 +102,72 @@ class CategoryController extends AppController{
         if(!$search){
             return $this->render('advancesearch');
         }
+
         $pages = new Pagination(['totalCount'=> $query->count(), 'pageSize'=> 9,'forcePageParam' => false, 'pageSizeParam' => false ]);
         $products = $query->offset($pages->offset)->limit($pages->limit)->all();
-        return $this->render('advancesearch', compact('products','pages','search','c','name'));
+        return $this->render('advancesearch', compact('products','pages','search','c','name','min','max'));
     }
+
+    public function actionSignup(){
+        if(!Yii::$app->user->isGuest){
+            return $this->goHome();
+        }
+        $signup = new SignupForm();
+        if($signup->load(Yii::$app->request->post()) && $signup->validate()){
+            $user = new User();
+            $user->username = $signup->username;
+            $user->password = Yii::$app->security->generatePasswordHash($signup->password);
+            $user->email = $signup->email;
+            $user->phone = $signup->phone;
+            $user->country = $signup->country;
+            $user->surname = $signup->surname;
+            $user->name = $signup->name;
+            $user->lastname = $signup->lastname;
+            $user->address = $signup->address;
+//            debug($user);
+            if($user->save()){
+//                debug($user);
+                return $this->goHome();
+            }
+        }
+        return $this->render('signup',compact('signup'));
+
+    }
+
+    public function actionLogin()
+    {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+        $model = new LoginForm();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return $this->goBack();
+        }
+        $model->password = '';
+        return $this->render('login', [
+            'model' => $model,
+        ]);
+    }
+    public function actionLogout()
+    {
+        Yii::$app->user->logout();
+
+        return $this->goHome();
+    }
+
+    public function actionContact()
+    {
+        $model = new ContactForm();
+        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
+            Yii::$app->session->setFlash('contactFormSubmitted');
+
+            return $this->refresh();
+        }
+        return $this->render('contact', [
+            'model' => $model,
+        ]);
+    }
+
+
 
 }

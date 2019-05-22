@@ -28,11 +28,15 @@ use yii\helpers\Url;
 <!--                        </div>-->
                     </div><!--/brands_products-->
                     <div class="price-range"><!--price-range-->
+
                         <h2>Поиск по цене</h2>
-                        <div class="well">
-                            <input type="text" class="span2" name="c" value="" data-slider-min="0" data-slider-max="5000" data-slider-step="5" data-slider-value="[250,1000]" id="sl2" ><br />
-                            <b>0 ₽</b> <b class="pull-right">5000 ₽</b>
-                        </div>
+                        <span class="price_histogram">
+                            <input type="radio" name="c" value="price"> <label> Цена: </label>
+                            <input type="number" name="min" value="" min="1" placeholder="мин" class="price_histogram" >
+                            <label> - </label>
+                            <input type="number" name="max" value="" min="1" placeholder="макс" class="price_histogram"   >
+                            <input type="submit" value="ОК" class="btn btn-primary price_histogram"  >
+                        </span>
                     </div><!--/price-range-->
 
                     <h2>Категория</h2>
@@ -47,7 +51,15 @@ use yii\helpers\Url;
                             <p align="center"><input type="submit" value="Поиск" class="btn btn-default" > </p>
                         </form>
                     <?php if(!empty($products)):?>
+                    <? if($c == 'new'): ?>
+                        <h4>Новинки: </h4>
+                    <?php elseif($c == 'sale'): ?>
+                        <h4>Товары по скидке: </h4>
+                    <?php elseif($c == 'price'): ?>
+                            <h4>Поиск по цене от <?=$min ?> до <?=$max?> ₽</h4>
+                     <?php else: ?>
                         <h4>Поиск по <?= $name?>, запрос: <?= Html::encode($search)?></h4>
+                     <?endif;?>
                         <? foreach ($products as $product):?>
                             <div class="product-details"><!--product-details-->
                                 <div class="col-sm-5">
