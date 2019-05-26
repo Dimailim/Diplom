@@ -117,6 +117,13 @@ class User extends ActiveRecord implements IdentityInterface
         return static::findOne(['address' => $address]);
     }
 
+    public static function findByRole($role)
+    {
+
+
+        return static::findOne(['role' => $role]);
+    }
+
 
 
     /**

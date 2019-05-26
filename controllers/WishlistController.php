@@ -53,10 +53,10 @@ class WishlistController extends AppController {
     public function actionView(){
         if(Yii::$app->user->isGuest){
             Yii::$app->session->setFlash('success','Авторизируйтесь, чтобы вопспользоваться закладками.');
-            return $this->goHome();
+            return $this->redirect(Yii::$app->request->referrer);
         }
         else{
-            $this->setMeta('Закладки | Книжный магазин "Magique Biblio" Diplom by Dmitry Gvozdev  ');
+            $this->setMeta('Закладки | Книжный магазин "Magique Biblio" Diplom by Dmitry Gvozdev');
             $user_id = Yii::$app->user->identity->getId();
             $wishlist =  Wishlist::find()->where(['user_id' => $user_id])->all();
             return $this->render('view', compact('wishlist'));

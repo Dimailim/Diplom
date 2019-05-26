@@ -49,6 +49,9 @@ ieAppAsset::register($this);
             <div class="col-sm-8">
                 <div class="shop-menu pull-right">
                     <ul class="nav navbar-nav">
+                        <?php if(Yii::$app->user->identity->role === 'admin'):?>
+                        <li><a href="<?=Url::to(['/admin'])?>"><i class="fa fa-user"></i>Админ</a></li>
+                        <?php endif;?>
                         <li><a href="<?=Url::to(['wishlist/view'])?>"><i class="fa fa-star"></i> Закладки</a></li>
                         <li><a href="#" onclick="return getCart()"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
                         <? if( Yii::$app->user->isGuest):?>
@@ -83,7 +86,10 @@ ieAppAsset::register($this);
                                 <li><a href="<?=Url::to(['category/index'])?>">Книги</a></li>
                                 <li><a href="<?=Url::to(['wishlist/view'])?>">Мои закладки</a></li>
                                 <li><a href="#" onclick="return getCart()">Корзина</a></li>
+                                <?if(Yii::$app->user->isGuest): ?>
                                 <li><a href="<?=Url::to(['category/login'])?>">Авторизация</a></li>
+                                <?else:?>
+                                <? endif;?>
                             </ul>
                         </li>
                         <li><a href="<?=Url::to(['category/contact'])?>">Контакты</a></li>

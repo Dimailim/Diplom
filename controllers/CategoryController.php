@@ -22,12 +22,13 @@ use yii\web\HttpException;
 class CategoryController extends AppController{
 
     public function  actionIndex(){ //действие по умолчанию
+        $cat = Categories::find()->all();
         $hits = Products::find()->where(['hit' => 1])->limit(6)->all();
-        $sales = Products::find()->where(['sale' => 1])->limit(6)->all();
+        $sales = Products::find()->where(['sale' => 1])->limit(9)->all();
         $new = Products::find()->where(['new' => 1])->limit(3)->all();
         //debug($hits);thunder
         $this->setMeta('Magique biblio - книжный интернет-магазин. Diplom by Dmitry Gvozdev');
-        return $this->render('index',compact('hits','sales','new'));
+        return $this->render('index',compact('hits','sales','new','cat'));
     }
     public function actionView($id){
 //        $id = Yii::$app->request->get('id');  // второй способ через массив  get
@@ -130,6 +131,7 @@ class CategoryController extends AppController{
                 return $this->goHome();
             }
         }
+        $this->setMeta('Регистрация нового пользователя | Книжный магазин "Magique Biblio" Diplom by Dmitry Gvozdev');
         return $this->render('signup',compact('signup'));
 
     }
@@ -144,6 +146,7 @@ class CategoryController extends AppController{
             return $this->goBack();
         }
         $model->password = '';
+        $this->setMeta('Авторизация | Книжный магазин "Magique Biblio" Diplom by Dmitry Gvozdev');
         return $this->render('login', [
             'model' => $model,
         ]);

@@ -42,8 +42,8 @@ ieAppAsset::register($this);
                 <div class="col-sm-4">
                     <div class="logo pull-left">
                         <!--                    <img src="/images/home/logo.png" alt="" />-->
-                        <a href="<?= Url::home()?>"><?= Html::img('@web/images/home/logo.png'); ?></a>
-                        <p>Админ панель</p>
+<!--                        <a href="--><?//= Url::home()?><!--">--><?//= Html::img('@web/images/home/logo.png'); ?><!--</a>-->
+                        <h4>Админ панель</h4>
                     </div>
 
                 </div>
@@ -51,10 +51,8 @@ ieAppAsset::register($this);
 
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-user"></i>Профиль</a></li>
-                            <li><a href="#"><i class="fa fa-star"></i> Закладки</a></li>
-                            <li><a href="#" onclick="return getCart()"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
-                            <li><a href="login.html"><i class="fa fa-lock"></i> Авторизация</a></li>
+                            <li><a href="#"><i class="fa fa-user"></i>Вы вошли как <?=Yii::$app->user->identity->username?> </a></li>
+                            <li><a href="<?=Url::home()?>"><i class="fa fa-lock"></i>Вернуться на сайт</a></li>
                         </ul>
                     </div>
                 </div>
@@ -76,6 +74,32 @@ ieAppAsset::register($this);
                     </div>
                 </div>
             </div>
+        </div>
+    </div><!--/header-bottom-->
+    <div class="header-bottom"><!--header-bottom-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="mainmenu pull-left">
+                        <ul class="nav navbar-nav collapse navbar-collapse">
+                            <li><a href="<?= Url::to(['/admin'])?>" class="active">Главная</a></li>
+                            <li><a href="<?=Url::to(['category/contact'])?>"> Заказы</a></li>
+                            <li><a href="<?=Url::to(['category/contact'])?>">Категории</a></li>
+                            <li><a href="<?=Url::to(['category/contact'])?>">Отзывы</a></li>
+                            <li><a href="<?=Url::to(['category/contact'])?>">Пользователи</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+        </div>
         </div>
     </div><!--/header-bottom-->
     </header><!--/header-->

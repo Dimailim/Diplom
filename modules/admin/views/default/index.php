@@ -1,12 +1,14 @@
+<div class="container">
 <div class="admin-default-index container">
-    <h1><?= $this->context->action->uniqueId ?></h1>
+<?//= //$this->context->action->uniqueId ?>
+    <h2> Добро пожаловать в админ панель, <?=Yii::$app->user->identity->name?>!</h2>
     <p>
-        This is the view content for action "<?= $this->context->action->id ?>".
-        The action belongs to the controller "<?= get_class($this->context) ?>"
-        in the "<?= $this->context->module->id ?>" module.
+       Чтобы начать работу выберите  нужный вам  пункт в меню.
     </p>
-    <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
-    </p>
+<!--    <p>-->
+<!--        You may customize this page by editing the following file:<br>-->
+<!--        <code>--><?//= __FILE__ ?><!--</code>-->
+<!--    </p>-->
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
 </div>
