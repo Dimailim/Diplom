@@ -17,6 +17,7 @@
                     </thead>
                     <tbody>
                     <?php foreach ($session['cart'] as $id => $item): ?>
+
                     <tr>
                         <td>
                            <a href="<?=Url::to(['book/view', 'id'=> $id])?>"><?= Html::img("@web/images/books/{$item['img']}", ['alt'=> $item['product_name'], 'height' => '50']); ?></a>

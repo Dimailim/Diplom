@@ -96,7 +96,7 @@ abstract class Application extends Module
     /**
      * @var string the application name.
      */
-    public $name = 'Админ панель | Маgique Biblio';
+    public $name = 'My Application';
     /**
      * @var string the charset currently used for the application.
      */

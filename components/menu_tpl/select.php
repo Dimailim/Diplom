@@ -1,14 +1,10 @@
-<li>!!!<a href=""><?= $category['name_category']; ?>
-        <?php if(isset($category['genre'])):  $genre = $category['genre']; ?>
-            <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-        <?php endif; ?>
-    </a>
+
+<option value="<?=$category['id']?>" <?php if($category['id'] == $this->model->genre_id) echo 'selected'?>> <?=$category['name_category'];?>
     <?php if(isset($genre)):?>
-        <? foreach ($genre as $title): ?>
-            <ul>
-                <a href=""> <?=$title['genre_name']?></a>
-            </ul>
-        <? endforeach; ?>
-    <?php endif; ?>
-</li>
+    <? foreach ($genre as $title): ?>
+    <!--            <ul>-->
+    <?=$title['genre_name']?>
+    <!--            </ul>--></option>
+<? endforeach; ?>
+<?php endif; ?>
 

@@ -15,6 +15,8 @@ use yii\bootstrap\Modal;
 
 AppAsset::register($this);
 ieAppAsset::register($this);
+
+
 ?>
 <?php $this->beginPage() ?>
     <!DOCTYPE html>
@@ -91,10 +93,27 @@ ieAppAsset::register($this);
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
                             <li><a href="<?= Url::to(['/admin'])?>" class="active">Главная</a></li>
-                            <li><a href="<?=Url::to(['category/contact'])?>"> Заказы</a></li>
-                            <li><a href="<?=Url::to(['category/contact'])?>">Категории</a></li>
-                            <li><a href="<?=Url::to(['category/contact'])?>">Отзывы</a></li>
-                            <li><a href="<?=Url::to(['category/contact'])?>">Пользователи</a></li>
+                            <li><a href="<?=Url::to(['order/index'])?>">Заказы</a></li>
+                            <li class="dropdown"><a href="#">Категории<i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+                                <li><a href="<?=Url::to(['category/index'])?>">Список категорий</a></li>
+                                <li><a href="<?=Url::to(['category/create'])?>">Создать категорию</a></li>
+                            </ul>
+                            </li>
+                            <li class="dropdown"><a href="#">Товары<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    <li><a href="<?=Url::to(['product/index'])?>">Список товаров</a></li>
+                                    <li><a href="<?=Url::to(['product/create'])?>">Создать товар</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a href="#">Жанры<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    <li><a href="<?=Url::to(['genre/index'])?>">Список жанров</a></li>
+                                    <li><a href="<?=Url::to(['genre/create'])?>">Создать жанр</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="<?=Url::to(['review/index'])?>">Отзывы</a></li>
+                            <li><a href="<?=Url::to(['user/index'])?>">Пользователи</a></li>
 
                         </ul>
                     </div>
@@ -103,8 +122,16 @@ ieAppAsset::register($this);
         </div>
     </div><!--/header-bottom-->
     </header><!--/header-->
+    <div class="container">
+        <?php if( Yii::$app->session->hasFlash('success') ): ?>
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <?php echo Yii::$app->session->getFlash('success'); ?>
+            </div>
+        <?php endif;?>
+        <?=$content;?>
+    </div>
 
-    <?=$content;?>
 
     <footer id="footer"><!--Footer-->
         <div class="footer-bottom">

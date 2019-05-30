@@ -24,10 +24,11 @@ use yii\helpers\Url;
                     <h2 class="title text-center">Поиск по запросу: <?= Html::encode($q)?></h2>
                     <?php if(!empty($products)):?>
                         <? foreach ($products as $product):?>
+                            <? $img = $product->getImage(); ?>
                             <div class="product-details"><!--product-details-->
                                 <div class="col-sm-5">
                                     <div class="view-product">
-                                        <a href ="<?=Url::to(['book/view', 'id' => $product['id']])  ?>"> <?= Html::img("@web/images/books/{$product['img']}", ['alt'=> $product['product_name']]); ?></a>
+                                        <a href ="<?=Url::to(['book/view', 'id' => $product['id']])  ?>"> <?= Html::img("@web/images/books/{$img->filePath}", ['alt'=> $product['product_name']]); ?></a>
                                     </div>
                                 </div>
                                 <div class="col-sm-7">

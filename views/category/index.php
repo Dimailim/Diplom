@@ -19,6 +19,7 @@ use yii\helpers\Url;
                     <div class="carousel-inner">
                     <? $count = 0; $i = count($new) ?>
                       <? foreach ($new as $item): ?>
+                          <?php $img = $item->getImage(); ?>
                         <?if($count % 1 == 0): ?>
                         <div class="item <? if($count == 0){ echo "active"; } ?>">
                         <?endif;?>
@@ -29,7 +30,7 @@ use yii\helpers\Url;
                                 <a href="<?=Url::to(['book/view', 'id' => $item['id']])  ?>" class="btn btn-default get">Подробнее</a>
                             </div>
                             <div class="col-sm-6">
-                                <?= Html::img("@web/images/books/{$item['img']}", ['alt'=> $item['product_name']]); ?>
+                                <?= Html::img("@web/images/books/{$img->filePath}", ['alt'=> $item['product_name']]); ?>
 <!--                                <img src="/images/home/pricing.png"  class="pricing" alt="" />-->
                             </div>
                         <? $count++ ?>
@@ -82,11 +83,12 @@ use yii\helpers\Url;
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center">Популярные книги</h2>
                     <? foreach ($hits as $hit): ?>
+                        <?php $img = $hit->getImage(); ?>
                     <div class="col-sm-4">
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <a href="<?=Url::to(['book/view', 'id' => $hit['id']])  ?>"> <?= Html::img("@web/images/books/{$hit['img']}", ['alt'=> $hit['product_name']]); ?></a>
+                                    <a href="<?=Url::to(['book/view', 'id' => $hit['id']])  ?>"> <?= Html::img("@web/images/books/{$img->filePath}", ['alt'=> $hit['product_name']]); ?></a>
                                     <h2><?= $hit['price']; ?> ₽</h2>
                                     <p><a href ="<?=Url::to(['book/view', 'id' => $hit['id']])  ?>"><?= $hit['product_name']; ?></a></p>
                                     <a href="<?=Url::to(['cart/add', 'id' => $hit['id']]) ?>" data-id="<?=$hit['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Добавить в корзину</a>
@@ -118,7 +120,7 @@ use yii\helpers\Url;
                         <div class="carousel-inner">
                             <? $count = 0; $i = count($sales) ?>
                             <? foreach ($sales as $sale): ?>
-
+                                <?php $img = $sale->getImage(); ?>
                                 <?if($count % 3 == 0): ?>
                                     <div class="item <? if($count == 0){ echo "active"; } ?>">
                                 <?endif;?>
@@ -127,7 +129,7 @@ use yii\helpers\Url;
                                         <div class="single-products">
                                             <div class="productinfo text-center">
                                                 <!--                                            <img src="/images/home/recommend1.jpg" alt="" />-->
-                                                <a href="<?=Url::to(['book/view', 'id' => $sale['id']]);?>"><?=Html::img("@web/images/books/{$sale['img']}",['alt' => $sale['product_name']]);?></a>
+                                                <a href="<?=Url::to(['book/view', 'id' => $sale['id']]);?>"><?=Html::img("@web/images/books/{$img->filePath}",['alt' => $sale['product_name']]);?></a>
                                                 <h2><?=$sale['price']?> ₽ </h2>
                                                 <p><a href="<?=Url::to(['book/view', 'id' => $sale['id']]);?>"> <?=$sale['product_name'];?></a></p>
                                                 <a href="<?=Url::to(['cart/add', 'id' => $sale['id']]) ?>" data-id="<?=$sale['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Добавить в корзину</a>

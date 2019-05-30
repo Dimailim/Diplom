@@ -23,12 +23,13 @@ class WishlistController extends AppController {
         }
         else{
            $book =  Products::findOne($id);
+                $img = $book->getImage();
                $wishlist = new Wishlist();
                $wishlist->product_id = $book->id;
                $wishlist->product_name = $book->product_name;
                $wishlist->author = $book->author;
                $wishlist->price =$book->price;
-               $wishlist->img = $book->img;
+               $wishlist->img = $img->filePath;
                $wishlist->user_id = Yii::$app->user->identity->getId();
             if($wishlist->save()){
                Yii::$app->session->setFlash('success','Книга успешно добавлена в закладки');

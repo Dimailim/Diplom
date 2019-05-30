@@ -68,13 +68,13 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        foreach (self::$users as $user) {
-            if ($user['accessToken'] === $token) {
-                return new static($user);
-            }
-        }
-
-        return null;
+//        foreach (self::$users as $user) {
+//            if ($user['accessToken'] === $token) {
+//                return new static($user);
+//            }
+//        }
+//
+//        return null;
     }
 
     /**
@@ -85,42 +85,30 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findByUsername($username)
     {
-
-
         return static::findOne(['username' => $username]);
     }
 
     public static function findByName($name)
     {
-
-
         return static::findOne(['name' => $name]);
     }
 
     public static function findByEmail($email)
     {
-
-
         return static::findOne(['email' => $email]);
     }
     public static function findByPhone($phone)
     {
-
-
         return static::findOne(['phone' => $phone]);
     }
 
     public static function findByAddress($address)
     {
-
-
         return static::findOne(['address' => $address]);
     }
 
     public static function findByRole($role)
     {
-
-
         return static::findOne(['role' => $role]);
     }
 

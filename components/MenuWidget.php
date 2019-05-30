@@ -21,6 +21,7 @@ class MenuWidget extends Widget{
     public $tpl;
     public $data; // записи категории из бд
     public  $menuHtml;  //  готовый html код в зависимости от шаблона который сохранится в  перменной  tpl
+    public  $model;
     public function init(){
         parent::init();
         if( $this->tpl == null){
@@ -31,18 +32,20 @@ class MenuWidget extends Widget{
 
     public function  run(){
         //get cache
-        $menu = Yii::$app->cache->get('menu');
-        if(!$menu){
+        if($this->tpl == 'menu.php'){
+            $menu = Yii::$app->cache->get('menu.php');
+            if($menu){
+                return $menu;
+            }
+        }
             $this->data = Categories::find()->indexBy('id')->joinWith('genre')->asArray()->all();
             $this->menuHtml = $this->getMenuHtml($this->data);
            //set cache
+        if($this->tpl == 'menu.php'){
             Yii::$app->cache->set('menu', $this->menuHtml,3600*24);
-            return $this->menuHtml;
         }
-        else
-            return $menu;
+            return $this->menuHtml;
         //debug($this->tree);
-
     }
 
     protected function  getMenuHtml($data){

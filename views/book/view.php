@@ -35,6 +35,7 @@ $email = Yii::$app->user->identity->email;
 
             </div>
         </div>
+        <?php $img = $book->getImage();  ?>
         <?php //debug($book->genre->categories->name_category); //  продумать релизацию навигационная панель.  ?>
         <p><a href="<?=Url::home()?>">Главная</a><?=Html::img('@web/images/product-details/arrow_left.png')?><?=$book->genre->categories->name_category?><?=Html::img('@web/images/product-details/arrow_left.png')?><a href="<?=Url::to(['category/view','id' => $book->genre->id]) ?>"><?=$book->genre->genre_name?></a><?=Html::img('@web/images/product-details/arrow_left.png')?><?=$book->product_name?></p>
         <div class="col-sm-9 padding-right">
@@ -42,7 +43,7 @@ $email = Yii::$app->user->identity->email;
                 <div class="col-sm-5">
                     <div class="view-product">
 <!--                        <img src="/images/product-details/1.jpg" alt="" />-->
-                        <?=Html::img("@web/images/books/{$book->img}") ?>
+                        <?=Html::img("@web/images/books/{$img->filePath}") ?>
 <!--                        <h3>ZOOM</h3>-->
                     </div>
 

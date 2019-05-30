@@ -62,9 +62,10 @@ use yii\helpers\Url;
                      <?endif;?>
                         <? foreach ($products as $product):?>
                             <div class="product-details"><!--product-details-->
+                                <? $img = $product->getImage() ?>
                                 <div class="col-sm-5">
                                     <div class="view-product">
-                                    <a href ="<?=Url::to(['book/view', 'id' => $product['id']])  ?>"> <?= Html::img("@web/images/books/{$product['img']}", ['alt'=> $product['product_name']]); ?></a>
+                                    <a href ="<?=Url::to(['book/view', 'id' => $product['id']])  ?>"> <?= Html::img("@web/images/books/{$img->filePath}", ['alt'=> $product['product_name']]); ?></a>
                                     </div>
                                 </div>
                                 <div class="col-sm-7">

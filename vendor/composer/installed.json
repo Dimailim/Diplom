@@ -1,5 +1,56 @@
 [
     {
+        "name": "abeautifulsite/simpleimage",
+        "version": "2.7.0",
+        "version_normalized": "2.7.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/claviska/SimpleImage.git",
+            "reference": "54a99d302355d22ee00d9842a8dbe101a52203d8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/claviska/SimpleImage/zipball/54a99d302355d22ee00d9842a8dbe101a52203d8",
+            "reference": "54a99d302355d22ee00d9842a8dbe101a52203d8",
+            "shasum": ""
+        },
+        "require": {
+            "ext-gd": "*",
+            "php": ">=5.3.0"
+        },
+        "time": "2017-01-06T16:38:10+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.5-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "abeautifulsite": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Nazar Mokrynskyi",
+                "email": "nazar@mokrynskyi.com",
+                "homepage": "http://cleverstyle.org/",
+                "role": "Developer"
+            },
+            {
+                "name": "Cory LaViska",
+                "homepage": "http://www.abeautifulsite.net/",
+                "role": "Developer"
+            }
+        ],
+        "description": "A PHP class that simplifies working with images"
+    },
+    {
         "name": "behat/gherkin",
         "version": "v4.4.5",
         "version_normalized": "4.4.5.0",
@@ -108,17 +159,40 @@
     },
     {
         "name": "bower-asset/jquery",
-        "version": "3.3.1",
-        "version_normalized": "3.3.1.0",
+        "version": "3.4.1",
+        "version_normalized": "3.4.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/jquery/jquery-dist.git",
-            "reference": "9e8ec3d10fad04748176144f108d7355662ae75e"
+            "reference": "15bc73803f76bc53b654b9fdbbbc096f56d7c03d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/9e8ec3d10fad04748176144f108d7355662ae75e",
-            "reference": "9e8ec3d10fad04748176144f108d7355662ae75e"
+            "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/15bc73803f76bc53b654b9fdbbbc096f56d7c03d",
+            "reference": "15bc73803f76bc53b654b9fdbbbc096f56d7c03d"
+        },
+        "type": "bower-asset",
+        "installation-source": "dist",
+        "license": [
+            "MIT"
+        ]
+    },
+    {
+        "name": "bower-asset/jquery-ui",
+        "version": "1.12.1",
+        "version_normalized": "1.12.1.0",
+        "source": {
+            "type": "git",
+            "url": "git@github.com:components/jqueryui.git",
+            "reference": "44ecf3794cc56b65954cc19737234a3119d036cc"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/components/jqueryui/zipball/44ecf3794cc56b65954cc19737234a3119d036cc",
+            "reference": "44ecf3794cc56b65954cc19737234a3119d036cc"
+        },
+        "require": {
+            "bower-asset/jquery": ">=1.6"
         },
         "type": "bower-asset",
         "installation-source": "dist",
@@ -438,6 +512,66 @@
         "description": "BDD assertion library for PHPUnit"
     },
     {
+        "name": "costa-rico/yii2-images",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/CostaRico/yii2-images.git",
+            "reference": "df63bd9113cb25d8f480485033b7ed23ff105915"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/CostaRico/yii2-images/zipball/df63bd9113cb25d8f480485033b7ed23ff105915",
+            "reference": "df63bd9113cb25d8f480485033b7ed23ff105915",
+            "shasum": ""
+        },
+        "require": {
+            "abeautifulsite/simpleimage": "2.7",
+            "yiisoft/yii2": "*"
+        },
+        "require-dev": {
+            "codeception/specify": "*",
+            "codeception/verify": "*",
+            "mikey179/vfsstream": "1.3.*@dev",
+            "yiisoft/yii2-codeception": "*"
+        },
+        "suggest": {
+            "ext-imagick": ""
+        },
+        "time": "2018-07-04T12:53:06+00:00",
+        "type": "yii2-extension",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "rico\\yii2images\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Costa Rico",
+                "email": "zetogo@gmail.com"
+            },
+            {
+                "name": "Rob Rhyne",
+                "email": "rob.rhyne@gmail.com"
+            }
+        ],
+        "description": "yii2 images module for storing images",
+        "keywords": [
+            "Costa Rico",
+            "images",
+            "images store",
+            "store",
+            "yii2",
+            "yii2-images"
+        ]
+    },
+    {
         "name": "doctrine/instantiator",
         "version": "1.0.5",
         "version_normalized": "1.0.5.0",
@@ -551,17 +685,17 @@
     },
     {
         "name": "egulias/email-validator",
-        "version": "2.1.7",
-        "version_normalized": "2.1.7.0",
+        "version": "2.1.8",
+        "version_normalized": "2.1.8.0",
         "source": {
             "type": "git",
             "url": "https://github.com/egulias/EmailValidator.git",
-            "reference": "709f21f92707308cdf8f9bcfa1af4cb26586521e"
+            "reference": "c26463ff9241f27907112fbcd0c86fa670cfef98"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/709f21f92707308cdf8f9bcfa1af4cb26586521e",
-            "reference": "709f21f92707308cdf8f9bcfa1af4cb26586521e",
+            "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/c26463ff9241f27907112fbcd0c86fa670cfef98",
+            "reference": "c26463ff9241f27907112fbcd0c86fa670cfef98",
             "shasum": ""
         },
         "require": {
@@ -576,7 +710,7 @@
         "suggest": {
             "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
         },
-        "time": "2018-12-04T22:38:24+00:00",
+        "time": "2019-05-16T22:02:54+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -776,6 +910,113 @@
             "stream",
             "uri",
             "url"
+        ]
+    },
+    {
+        "name": "mihaildev/yii2-ckeditor",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/MihailDev/yii2-ckeditor.git",
+            "reference": "d20aa7f6bcf610fee226d6eb15212a279875bf87"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/MihailDev/yii2-ckeditor/zipball/d20aa7f6bcf610fee226d6eb15212a279875bf87",
+            "reference": "d20aa7f6bcf610fee226d6eb15212a279875bf87",
+            "shasum": ""
+        },
+        "require": {
+            "yiisoft/yii2": "*"
+        },
+        "time": "2014-11-19T22:04:08+00:00",
+        "type": "yii2-extension",
+        "extra": {
+            "asset-installer-paths": {
+                "npm-asset-library": "vendor/npm",
+                "bower-asset-library": "vendor/bower"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "mihaildev\\ckeditor\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Mihail",
+                "email": "mihail.kucher@gmail.com",
+                "homepage": "https://github.com/MihailDev",
+                "role": "Developer"
+            }
+        ],
+        "description": "Yii2 CKEditor",
+        "homepage": "https://github.com/MihailDev/yii2-ckeditor",
+        "keywords": [
+            "CKEditor",
+            "editor",
+            "wysiwyg",
+            "yii"
+        ]
+    },
+    {
+        "name": "mihaildev/yii2-elfinder",
+        "version": "1.3.0",
+        "version_normalized": "1.3.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/MihailDev/yii2-elfinder.git",
+            "reference": "3cc3001a84e3cc3841131a0a947d7917948a60b1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/MihailDev/yii2-elfinder/zipball/3cc3001a84e3cc3841131a0a947d7917948a60b1",
+            "reference": "3cc3001a84e3cc3841131a0a947d7917948a60b1",
+            "shasum": ""
+        },
+        "require": {
+            "studio-42/elfinder": "^2.1.10",
+            "yiisoft/yii2": "~2.0.13",
+            "yiisoft/yii2-jui": "*"
+        },
+        "time": "2018-10-01T17:00:54+00:00",
+        "type": "yii2-extension",
+        "extra": {
+            "asset-installer-paths": {
+                "npm-asset-library": "vendor/npm",
+                "bower-asset-library": "vendor/bower"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "mihaildev\\elfinder\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Mihail",
+                "email": "mihail.kucher@gmail.com",
+                "homepage": "https://github.com/MihailDev",
+                "role": "Developer"
+            }
+        ],
+        "description": "Yii2 ElFinder",
+        "homepage": "https://github.com/MihailDev/yii2-elfinder",
+        "keywords": [
+            "elfinder",
+            "filemanager",
+            "yii"
         ]
     },
     {
@@ -989,17 +1230,17 @@
     },
     {
         "name": "phpdocumentor/reflection-docblock",
-        "version": "4.3.0",
-        "version_normalized": "4.3.0.0",
+        "version": "4.3.1",
+        "version_normalized": "4.3.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-            "reference": "94fd0001232e47129dd3504189fa1c7225010d08"
+            "reference": "bdd9f737ebc2a01c06ea7ff4308ec6697db9b53c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/94fd0001232e47129dd3504189fa1c7225010d08",
-            "reference": "94fd0001232e47129dd3504189fa1c7225010d08",
+            "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/bdd9f737ebc2a01c06ea7ff4308ec6697db9b53c",
+            "reference": "bdd9f737ebc2a01c06ea7ff4308ec6697db9b53c",
             "shasum": ""
         },
         "require": {
@@ -1013,7 +1254,7 @@
             "mockery/mockery": "^1.0",
             "phpunit/phpunit": "^6.4"
         },
-        "time": "2017-11-30T07:14:17+00:00",
+        "time": "2019-04-30T17:48:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2326,18 +2567,78 @@
         "homepage": "https://github.com/sebastianbergmann/version"
     },
     {
-        "name": "swiftmailer/swiftmailer",
-        "version": "v6.2.0",
-        "version_normalized": "6.2.0.0",
+        "name": "studio-42/elfinder",
+        "version": "2.1.49",
+        "version_normalized": "2.1.49.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/swiftmailer/swiftmailer.git",
-            "reference": "6fa3232ff9d3f8237c0fae4b7ff05e1baa4cd707"
+            "url": "https://github.com/Studio-42/elFinder.git",
+            "reference": "8669ee276693177e2c288d852923f4a0371d1b96"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/6fa3232ff9d3f8237c0fae4b7ff05e1baa4cd707",
-            "reference": "6fa3232ff9d3f8237c0fae4b7ff05e1baa4cd707",
+            "url": "https://api.github.com/repos/Studio-42/elFinder/zipball/8669ee276693177e2c288d852923f4a0371d1b96",
+            "reference": "8669ee276693177e2c288d852923f4a0371d1b96",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2"
+        },
+        "suggest": {
+            "barryvdh/elfinder-flysystem-driver": "VolumeDriver for elFinder to use Flysystem as a root.",
+            "google/apiclient": "VolumeDriver GoogleDrive require `google/apiclient:^2.0.",
+            "kunalvarma05/dropbox-php-sdk": "VolumeDriver `Dropbox`2 require `kunalvarma05/dropbox-php-sdk.",
+            "nao-pon/flysystem-google-drive": "require in GoogleDrive network volume mounting with Flysystem."
+        },
+        "time": "2019-04-16T15:16:44+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Dmitry Levashov",
+                "email": "dio@std42.ru",
+                "homepage": "http://std42.ru"
+            },
+            {
+                "name": "Troex Nevelin",
+                "email": "troex@fury.scancode.ru",
+                "homepage": "http://std42.ru"
+            },
+            {
+                "name": "Community contributions",
+                "homepage": "https://github.com/Studio-42/elFinder/contributors"
+            },
+            {
+                "name": "Naoki Sawada",
+                "email": "hypweb+elfinder@gmail.com",
+                "homepage": "http://xoops.hypweb.net"
+            }
+        ],
+        "description": "File manager for web",
+        "homepage": "http://elfinder.org"
+    },
+    {
+        "name": "swiftmailer/swiftmailer",
+        "version": "v6.2.1",
+        "version_normalized": "6.2.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/swiftmailer/swiftmailer.git",
+            "reference": "5397cd05b0a0f7937c47b0adcb4c60e5ab936b6a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/5397cd05b0a0f7937c47b0adcb4c60e5ab936b6a",
+            "reference": "5397cd05b0a0f7937c47b0adcb4c60e5ab936b6a",
             "shasum": ""
         },
         "require": {
@@ -2355,7 +2656,7 @@
             "ext-intl": "Needed to support internationalized email addresses",
             "true/punycode": "Needed to support internationalized email addresses, if ext-intl is not installed"
         },
-        "time": "2019-03-10T07:52:41+00:00",
+        "time": "2019-04-21T09:21:45+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2391,8 +2692,8 @@
     },
     {
         "name": "symfony/browser-kit",
-        "version": "v3.4.26",
-        "version_normalized": "3.4.26.0",
+        "version": "v3.4.28",
+        "version_normalized": "3.4.28.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/browser-kit.git",
@@ -2450,17 +2751,17 @@
     },
     {
         "name": "symfony/console",
-        "version": "v3.4.26",
-        "version_normalized": "3.4.26.0",
+        "version": "v3.4.28",
+        "version_normalized": "3.4.28.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/console.git",
-            "reference": "15a9104356436cb26e08adab97706654799d31d8"
+            "reference": "8e1d1e406dd31727fa70cd5a99cda202e9d6a5c6"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/console/zipball/15a9104356436cb26e08adab97706654799d31d8",
-            "reference": "15a9104356436cb26e08adab97706654799d31d8",
+            "url": "https://api.github.com/repos/symfony/console/zipball/8e1d1e406dd31727fa70cd5a99cda202e9d6a5c6",
+            "reference": "8e1d1e406dd31727fa70cd5a99cda202e9d6a5c6",
             "shasum": ""
         },
         "require": {
@@ -2489,7 +2790,7 @@
             "symfony/lock": "",
             "symfony/process": ""
         },
-        "time": "2019-04-08T09:29:13+00:00",
+        "time": "2019-05-09T08:42:51+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2524,8 +2825,8 @@
     },
     {
         "name": "symfony/css-selector",
-        "version": "v3.4.26",
-        "version_normalized": "3.4.26.0",
+        "version": "v3.4.28",
+        "version_normalized": "3.4.28.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/css-selector.git",
@@ -2579,17 +2880,17 @@
     },
     {
         "name": "symfony/debug",
-        "version": "v3.4.26",
-        "version_normalized": "3.4.26.0",
+        "version": "v3.4.28",
+        "version_normalized": "3.4.28.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/debug.git",
-            "reference": "681afbb26488903c5ac15e63734f1d8ac430c9b9"
+            "reference": "671fc55bd14800668b1d0a3708c3714940e30a8c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/debug/zipball/681afbb26488903c5ac15e63734f1d8ac430c9b9",
-            "reference": "681afbb26488903c5ac15e63734f1d8ac430c9b9",
+            "url": "https://api.github.com/repos/symfony/debug/zipball/671fc55bd14800668b1d0a3708c3714940e30a8c",
+            "reference": "671fc55bd14800668b1d0a3708c3714940e30a8c",
             "shasum": ""
         },
         "require": {
@@ -2602,7 +2903,7 @@
         "require-dev": {
             "symfony/http-kernel": "~2.8|~3.0|~4.0"
         },
-        "time": "2019-04-11T09:48:14+00:00",
+        "time": "2019-05-18T13:32:47+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2637,8 +2938,8 @@
     },
     {
         "name": "symfony/dom-crawler",
-        "version": "v3.4.26",
-        "version_normalized": "3.4.26.0",
+        "version": "v3.4.28",
+        "version_normalized": "3.4.28.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/dom-crawler.git",
@@ -2696,8 +2997,8 @@
     },
     {
         "name": "symfony/event-dispatcher",
-        "version": "v3.4.26",
-        "version_normalized": "3.4.26.0",
+        "version": "v3.4.28",
+        "version_normalized": "3.4.28.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/event-dispatcher.git",
@@ -2761,23 +3062,23 @@
     },
     {
         "name": "symfony/finder",
-        "version": "v3.4.26",
-        "version_normalized": "3.4.26.0",
+        "version": "v3.4.28",
+        "version_normalized": "3.4.28.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/finder.git",
-            "reference": "61af5ce0b34b942d414fe8f1b11950d0e9a90e98"
+            "reference": "fa5d962a71f2169dfe1cbae217fa5a2799859f6c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/finder/zipball/61af5ce0b34b942d414fe8f1b11950d0e9a90e98",
-            "reference": "61af5ce0b34b942d414fe8f1b11950d0e9a90e98",
+            "url": "https://api.github.com/repos/symfony/finder/zipball/fa5d962a71f2169dfe1cbae217fa5a2799859f6c",
+            "reference": "fa5d962a71f2169dfe1cbae217fa5a2799859f6c",
             "shasum": ""
         },
         "require": {
             "php": "^5.5.9|>=7.0.8"
         },
-        "time": "2019-04-02T19:54:57+00:00",
+        "time": "2019-05-24T12:25:55+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3115,8 +3416,8 @@
     },
     {
         "name": "symfony/yaml",
-        "version": "v3.4.26",
-        "version_normalized": "3.4.26.0",
+        "version": "v3.4.28",
+        "version_normalized": "3.4.28.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/yaml.git",
@@ -3271,22 +3572,22 @@
     },
     {
         "name": "yiisoft/yii2",
-        "version": "2.0.17",
-        "version_normalized": "2.0.17.0",
+        "version": "2.0.19",
+        "version_normalized": "2.0.19.0",
         "source": {
             "type": "git",
             "url": "https://github.com/yiisoft/yii2-framework.git",
-            "reference": "b56159228c3b4990e38cf41ddd69af27ab015bea"
+            "reference": "3e74c7338dd83cea6ffc6f5c25202b9f2f271f89"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/b56159228c3b4990e38cf41ddd69af27ab015bea",
-            "reference": "b56159228c3b4990e38cf41ddd69af27ab015bea",
+            "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/3e74c7338dd83cea6ffc6f5c25202b9f2f271f89",
+            "reference": "3e74c7338dd83cea6ffc6f5c25202b9f2f271f89",
             "shasum": ""
         },
         "require": {
             "bower-asset/inputmask": "~3.2.2 | ~3.3.5",
-            "bower-asset/jquery": "3.3.*@stable | 3.2.*@stable | 3.1.*@stable | 2.2.*@stable | 2.1.*@stable | 1.11.*@stable | 1.12.*@stable",
+            "bower-asset/jquery": "3.4.*@stable | 3.3.*@stable | 3.2.*@stable | 3.1.*@stable | 2.2.*@stable | 2.1.*@stable | 1.11.*@stable | 1.12.*@stable",
             "bower-asset/punycode": "1.3.*",
             "bower-asset/yii2-pjax": "~2.0.1",
             "cebe/markdown": "~1.0.0 | ~1.1.0 | ~1.2.0",
@@ -3297,7 +3598,7 @@
             "php": ">=5.4.0",
             "yiisoft/yii2-composer": "~2.0.4"
         },
-        "time": "2019-03-22T21:26:26+00:00",
+        "time": "2019-05-21T16:01:16+00:00",
         "bin": [
             "yii"
         ],
@@ -3373,24 +3674,27 @@
     },
     {
         "name": "yiisoft/yii2-bootstrap",
-        "version": "2.0.9",
-        "version_normalized": "2.0.9.0",
+        "version": "2.0.10",
+        "version_normalized": "2.0.10.0",
         "source": {
             "type": "git",
             "url": "https://github.com/yiisoft/yii2-bootstrap.git",
-            "reference": "4677951dda712dd99d5bf2a127eaee118dfea860"
+            "reference": "073c9ab0a4eb71f2485d84c96a1967130300d8fc"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/4677951dda712dd99d5bf2a127eaee118dfea860",
-            "reference": "4677951dda712dd99d5bf2a127eaee118dfea860",
+            "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/073c9ab0a4eb71f2485d84c96a1967130300d8fc",
+            "reference": "073c9ab0a4eb71f2485d84c96a1967130300d8fc",
             "shasum": ""
         },
         "require": {
             "bower-asset/bootstrap": "3.4.* | 3.3.* | 3.2.* | 3.1.*",
             "yiisoft/yii2": "~2.0.6"
         },
-        "time": "2019-01-29T21:39:45+00:00",
+        "require-dev": {
+            "phpunit/phpunit": "<7"
+        },
+        "time": "2019-04-23T13:18:43+00:00",
         "type": "yii2-extension",
         "extra": {
             "branch-alias": {
@@ -3491,17 +3795,17 @@
     },
     {
         "name": "yiisoft/yii2-debug",
-        "version": "2.1.1",
-        "version_normalized": "2.1.1.0",
+        "version": "2.1.4",
+        "version_normalized": "2.1.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/yiisoft/yii2-debug.git",
-            "reference": "632929c0682c6470ec838cf15d14c22418e6d07f"
+            "reference": "4cc407f34fd90e410d806ea3264781a9fb4fd1ef"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/632929c0682c6470ec838cf15d14c22418e6d07f",
-            "reference": "632929c0682c6470ec838cf15d14c22418e6d07f",
+            "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/4cc407f34fd90e410d806ea3264781a9fb4fd1ef",
+            "reference": "4cc407f34fd90e410d806ea3264781a9fb4fd1ef",
             "shasum": ""
         },
         "require": {
@@ -3514,7 +3818,7 @@
             "yiisoft/yii2-coding-standards": "~2.0",
             "yiisoft/yii2-swiftmailer": "*"
         },
-        "time": "2019-03-30T20:33:53+00:00",
+        "time": "2019-05-14T13:39:56+00:00",
         "type": "yii2-extension",
         "extra": {
             "branch-alias": {
@@ -3647,6 +3951,54 @@
         "keywords": [
             "code generator",
             "gii",
+            "yii2"
+        ]
+    },
+    {
+        "name": "yiisoft/yii2-jui",
+        "version": "2.0.7",
+        "version_normalized": "2.0.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/yiisoft/yii2-jui.git",
+            "reference": "ce45c16d4fbbe7d1c516d8d0e8311e07f6138eed"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/yiisoft/yii2-jui/zipball/ce45c16d4fbbe7d1c516d8d0e8311e07f6138eed",
+            "reference": "ce45c16d4fbbe7d1c516d8d0e8311e07f6138eed",
+            "shasum": ""
+        },
+        "require": {
+            "bower-asset/jquery-ui": "~1.12.1",
+            "yiisoft/yii2": "~2.0.4"
+        },
+        "time": "2017-11-25T15:32:29+00:00",
+        "type": "yii2-extension",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "yii\\jui\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Qiang Xue",
+                "email": "qiang.xue@gmail.com"
+            }
+        ],
+        "description": "The Jquery UI extension for the Yii framework",
+        "keywords": [
+            "jQuery UI",
             "yii2"
         ]
     },

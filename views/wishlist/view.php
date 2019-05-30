@@ -20,6 +20,7 @@
                 </thead>
                 <tbody>
             <?php foreach ($wishlist as $item):?>
+                <? $img = $item->getImage(); ?>
                 <tr>
                     <td class="cart_product">
 <!--                        <a href=""><img src="images/cart/one.png" alt=""></a>-->
